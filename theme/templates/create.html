@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<!--==========================
+      Contact Section
+    ============================-->
+<section id="contact" class="section-bg wow fadeInUp">
+
+    <div class="container">
+
+        <div class="section-header">
+            <br>
+            <h2>글쓰기</h2>
+            <p>공여자, 수혜자 선택하여 게시글을 작성해주세요</p>
+        </div>
+
+        <div id = "createForms">
+        <div class="createForm">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="createtable">
+                    <span class="c_title">CATEGORY</span> <br> {{ form.post_type }}<br><br>
+                    {{ form.title }}<br><br>
+                    <span class="c_title">BLOODTYPE</span> <br> {{ form.b_type }}<br><br>
+                    {{ form.body|linebreaks }}<br><br>
+                    <span class="c_title">REGION</span> <br> {{ form.region }}
+                </div><br>
+                <div class="text-center"><button class="createButton"  type="submit" value="입력">입력</button></div>
+                <!-- <input class="createButton" type="submit" value="입력"> -->
+            </form>
+        </div></div>
+
+        <!-- <div>
+            {% for i in posts %}
+            <a href="{% url 'detail' pk=i.pk %}">
+            <span>
+                {{ i.post_type }}
+                {{ i.title }}
+                {{ i.user }}
+                {{ i.pub_date }}
+            </span>
+            </a>
+            {% endfor %}
+        </div> -->
+
+    </div>
+</section><!-- #contact -->
+{% endblock content %}

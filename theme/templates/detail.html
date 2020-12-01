@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'css/detail.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<h1>TEST</h1>
+<div class="container">
+    <div class="detail_header">
+        <br><br>
+        <h2>{{ form.pk }}.&nbsp;{{ form.title }}</h2>
+        {{ form.pub_date }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="detail_post_type">{{ form.post_type }}</span><br>
+        &nbsp;{{ form.user }}&nbsp;&nbsp;&nbsp;{{ form.b_type }}&nbsp;&nbsp;&nbsp;{{ form.region }}<br>
+    </div>
+    <div class="detail_body">
+    {{ form.body }}<br><hr>
+    <a href="{% url 'update' pk=form.pk %}">수정</a>
+    <a href="{% url 'delete' pk=form.pk %}">삭제</a>
+    </div><br><br>
+    {% if user.username == form.user %}
+    <a href="{% url 'update' pk=form.pk %}">수정</a>
+    <a href="{% url 'delete' pk=form.pk %}">삭제</a>
+    {% endif %}
+    <br><br><br>
+    <div class="text-center">
+        <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="pro-access">정보 요청 버튼</button>
+    </div>
+</div><br>
+
+<div class="modal fade" id="buy-ticket-modal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">정보 요청</h4> <!-- 사용자 지정 부분② : 타이틀 -->
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          <p>정보 요청이 완료되었습니다.</p> <!-- 알림창 부분 -->
+          <p>하트시그널 챗봇 알림을 확인해주세요 !</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

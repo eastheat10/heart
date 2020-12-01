@@ -1,0 +1,161 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>하트시그널</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <link rel="stylesheet" href="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %}">
+  <script src="{% static 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' %}"></script>
+  <script src="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %}"></script>
+  {% block css %}
+  {% endblock %}
+  <!-- Favicons -->
+  <link href="{% static 'img/그림1.jpg' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800' %}"
+    rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!--==========================
+    Header
+  ============================-->
+  <header id="header" class="header-fixed">
+    <div class="container">
+
+      <div class="row">
+        <div class="col">
+          <div id="logo" class="col-6">
+            <a href="/#intro" class="scrollto"><img src="{% static 'img/그림_logo.png' %}" width="140px" alt="" title=""></a>
+          </div>
+        </div>
+
+        <div class="col-6.5">
+          <!-- <nav id="nav-menu-container"> -->
+          <ul class="nav-menu">
+            <li class="menu-active"><a href="/#intro">메인</a></li>
+            <li><a href="{% url 'speakers' %}">소개</a></li>
+            <!-- <li><a href="/#speakers">봉사페이지</a></li> -->
+            <!-- <li><a href="/#schedule">Schedule</a></li> -->
+            <!-- <li><a href="#venue">Venue</a></li> -->
+            <li><a href="{% url 'views_recipient' %}">헌혈요청리스트</a></li>
+            <li><a href="{% url 'views_donor' %}">공여자리스트</a></li>
+            <li><a href="{% url 'create' %}">글쓰기</a></li>
+            <li><a href="{% url 'faq' %}">질의응답(F.A.Q)</a></li>
+            <li><a href="{% url 'supporters' %}">후원</a></li>
+            <!-- <li class="buy-tickets"><a href="/#buy-tickets">로그인하기</a></li> -->
+          </ul>
+          <!-- </nav> -->
+        </div>
+
+        <div class="col">
+          <!-- <nav id="nav-menu-container"> -->
+          <ul class="nav-menu">
+            <li class="nav-item dropdown" style="margin-left: 10%">
+              {% if user.is_authenticated %}
+              <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" class="rounded-circle" width="40px" height="40px" />
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">{{user.username}} 님이 로그인 중</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'mypage' pk=user.username %}">
+                  <p>내 게시글 작성 내역</p>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/accounts/logout">
+                  <p>로그아웃</p>
+                </a>
+              </div>
+            {% else %}
+            <li class="login-btn" style="margin-left: 20%"><a href="{% url 'kakao_login' %}">로그인하러가기</a></li>
+            {% endif %}
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </header><!-- #header -->
+
+  {% block content %}
+  {% endblock %}
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4></h4>
+            <div class="copyright">
+              &copy;  <strong>하트시그널 sh & je & dy & yw</strong>
+            </div>
+            <div class="credits">
+              Developed by <a href="https://www.instagram.com/seon._.h_a/">이선하</a>,
+              <a href="https://www.instagram.com/j_eunning/">신정은</a>,<br>
+              <a href="#">윤동열</a>,
+              <a href="#">나예원</a>
+              <br><br>
+            </div>
+
+            <div class="social-links">&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="https://twitter.com/?lang=ko" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="https://www.facebook.com/" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.instagram.com/?hl=ko" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="https://www.google.com/webhp?hl=ko&ictx=2&sa=X&ved=0ahUKEwjf2Z7Lp4LiAhW0IqYKHezjCFoQPQgH" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="https://www.youtube.com/" class="youtube"><i class="fa fa-youtube"></i></a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
+  <script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
+  <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+  <script src="{% static 'lib/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'contactform/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

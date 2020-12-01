@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<!--==========================
+    About Section
+  ============================-->
+  <section id="speakers" class="wow fadeInUp">
+    <div class="container">
+      <div class="section-header">
+        <br><br><h2>하트시그널이란?</h2>
+        <p>간편한 카카오톡 로그인과 게시글 챗봇 알림 서비스를 이용해 지정헌혈을 매칭할 수 있는 서비스입니다.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="speaker">
+            <div class="img-fluid">
+              <img src="{% static 'img/카카오톡.png' %}" width="250px" height="250px" alt="Speaker 1">
+              <div class="details">
+                <h3>소셜 로그인</h3>
+                <p>간편하게 회원가입 하기!!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="speaker">
+            <div class="img-fluid">
+              <img src="{% static 'img/혈액.jpg' %}" width="250px" height="250px" alt="Speaker 1">
+              <div class="details">
+                <h3>수혜자/공여자 소통가능</h3>
+                <p>혈액 정보 포함한 게시글 작성하기!!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="speaker">
+            <div class="img-fluid">
+              <img src="{% static 'img/헌혈의집.png' %}" width="250px" height="250px" alt="Speaker 1">
+              <div class="details">
+                <h3>헌혈의 집</h3>
+                <p>현 위치에서 가까운 헌혈의 집 찾기!!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="speaker">
+            <div class="img-fluid">
+              <img src="{% static 'img/챗봇.png' %}" width="250px" height="250px" alt="Speaker 1">
+              <div class="details">
+                <h3>카카오 챗봇 알림</h3>
+                <p>로그인된 카카오계정 정보전송!!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>  
+
+</section>
+{% endblock content %}

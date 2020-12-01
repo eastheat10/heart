@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<section id="hotels" class="section-with-bg wow fadeInUp">
+
+    <div class="container">
+      <div class="section-header">
+        <br><br>
+        <h2>헌혈요청리스트</h2>
+        <p>지정 헌혈이 필요한 사람들은 이 게시판을 이용해주세요.</p>
+        <ul class="nav-menu">
+          <li class="login-btn" style="margin-left: 470px;"><a href="{% url 'v_area' %}">내주변헌혈병원</a></li>
+        </ul>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8">
+          <div class="hotel" style="padding-top: 20px;">
+            {% for i in post %}
+            <!-- <div class="hotel-img">
+              <img src="{% static 'img/hotels/1.jpg' %}" alt="Hotel 1" class="img-fluid">
+            </div> -->
+            <h3><a href="{% url 'detail' pk=i.pk %}">{{ i.title }}</a></h3>
+            <div class="stars">
+              <!-- <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i> -->
+              {{ i.post_type }}&nbsp;&nbsp;&nbsp;{{ i.b_type }}형&nbsp;&nbsp;&nbsp;{{ i.user }}&nbsp;&nbsp;&nbsp;{{ i.pub_date }}
+            </div>
+            <div class="text-right" style="padding-right: 20px;">
+              <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="pro-access">수혜자 정보 요청 버튼</button>
+            </div>
+            <hr>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="modal fade" id="buy-ticket-modal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">정보 요청</h4> <!-- 사용자 지정 부분② : 타이틀 -->
+                <button type="button" class="close" data-dismiss="modal">×</button>
+              </div>
+              <div class="modal-body">
+                <p>수혜자 정보 요청이 완료되었습니다.</p> <!-- 알림창 부분 -->
+                <p>하트시그널 챗봇 알림을 확인해주세요 !</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+{% endblock content %}
